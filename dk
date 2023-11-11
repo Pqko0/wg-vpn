@@ -14,9 +14,9 @@ services:
       - "/home/ubuntu/wg-access-server:/data"
     #   - "./config.yaml:/config.yaml" # if you have a custom config file
     environment:
-      - "WG_ADMIN_USERNAME=admin"
-      - "WG_ADMIN_PASSWORD=graveyard"
-      - "WG_WIREGUARD_PRIVATE_KEY=SONvQ13J8gLXp0TXBQnlGxBgs6C8E4SnnAGUb5UcX2o="
+      - "WG_ADMIN_USERNAME=$WG_ACCESS_USERNAME_HERE"
+      - "WG_ADMIN_PASSWORD=$WG_ACCESS_PASSWORD_HERE"
+      - "WG_WIREGUARD_PRIVATE_KEY=$WG_ACCESS_KEY_HERE"
     ports:
       - "8000:8000/tcp"
       - "51820:51820/udp"
