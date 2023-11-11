@@ -24,7 +24,18 @@ mkdir /data/wg-access-server
 
 cd /data/wg-access-server
 
-sudo groupadd docker
+if grep -q "^docker:" /etc/group; then
+    echo "The 'docker' group exists."
+else
+    echo "The 'docker' group does not exist."
+    # You can add code here to create the group or perform other actions.
+fi
+
+
+if ! getent group docker > /dev/null; then
+    sudo groupadd docker
+fi
+
 sudo usermod -aG docker $USER
 newgrp docker
 
