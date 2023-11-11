@@ -2,7 +2,7 @@
 Quick install for wireguard vpn. http://IP:8000/
 
 ```
-wget curl -s https://raw.githubusercontent.com/Pqko0/wg-vpn/main/setup -O setup.sh
+curl -s https://raw.githubusercontent.com/Pqko0/wg-vpn/main/setup -o setup.sh
 sudo chmod a+x ./setup.sh
 sudo bash ./setup.sh
 ```
