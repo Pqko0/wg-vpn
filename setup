@@ -37,7 +37,7 @@ sudo sed -i 's/WG_ACCESS_USERNAME_HERE/$(name)/g' docker-compose.yml
 sudo sed -i 's/WG_ACCESS_PASSWORD_HERE/$(password)/g' docker-compose.yml
 sudo sed -i 's/WG_ACCESS_KEY_HERE/$(PRIVATE_KEY)/g' docker-compose.yml
 
-sudo docker-compose up -d
+docker-compose up -d
 
 echo "======== WireGuard Access Server ========"
 echo "Thanks for using Pqko0's install script."
