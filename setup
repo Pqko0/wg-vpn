@@ -24,6 +24,13 @@ mkdir /data/wg-access-server
 
 cd /data/wg-access-server
 
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
+
 wget https://raw.githubusercontent.com/Pqko0/wg-vpn/main/dk -O docker-compose.yml
 
 sudo sed -i 's/WG_ACCESS_USERNAME_HERE/$(name)/g' docker-compose.yml
