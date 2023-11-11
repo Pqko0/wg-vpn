@@ -43,9 +43,9 @@ sudo systemctl enable containerd.service
 
 sudo wget https://raw.githubusercontent.com/Pqko0/wg-vpn/main/dk -O docker-compose.yml
 
-sudo sed -i 's/WG_ACCESS_USERNAME_HERE/$(name)/g' docker-compose.yml
-sudo sed -i 's/WG_ACCESS_PASSWORD_HERE/$(password)/g' docker-compose.yml
-sudo sed -i 's/WG_ACCESS_KEY_HERE/$(PRIVATE_KEY)/g' docker-compose.yml
+sudo sed -i "s/WG_ACCESS_USERNAME_HERE/$name/g" docker-compose.yml
+sudo sed -i "s/WG_ACCESS_PASSWORD_HERE/$password/g" docker-compose.yml
+sudo sed -i "s/WG_ACCESS_KEY_HERE/$PRIVATE_KEY/g" docker-compose.yml
 
 docker-compose up -d
 
