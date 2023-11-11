@@ -34,10 +34,9 @@ fi
 
 if ! getent group docker > /dev/null; then
     sudo groupadd docker
+    sudo usermod -aG docker $USER
+    newgrp docker
 fi
-
-sudo usermod -aG docker $USER
-newgrp docker
 
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
