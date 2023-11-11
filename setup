@@ -20,9 +20,9 @@ fi
 
 export PRIVATE_KEY="$(wg genkey)"
 
+sudo mkdir /data
 sudo mkdir /data/wg-access-server
-
-sudo cd /data/wg-access-server
+cd /data/wg-access-server
 
 if grep -q "^docker:" /etc/group; then
     echo "The 'docker' group exists."
