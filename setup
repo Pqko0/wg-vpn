@@ -20,9 +20,9 @@ fi
 
 export PRIVATE_KEY="$(wg genkey)"
 
-mkdir /data/wg-access-server
+sudo mkdir /data/wg-access-server
 
-cd /data/wg-access-server
+sudo cd /data/wg-access-server
 
 if grep -q "^docker:" /etc/group; then
     echo "The 'docker' group exists."
@@ -42,7 +42,7 @@ newgrp docker
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 
-wget https://raw.githubusercontent.com/Pqko0/wg-vpn/main/dk -O docker-compose.yml
+sudo wget https://raw.githubusercontent.com/Pqko0/wg-vpn/main/dk -O docker-compose.yml
 
 sudo sed -i 's/WG_ACCESS_USERNAME_HERE/$(name)/g' docker-compose.yml
 sudo sed -i 's/WG_ACCESS_PASSWORD_HERE/$(password)/g' docker-compose.yml
