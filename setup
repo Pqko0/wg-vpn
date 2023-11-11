@@ -18,19 +18,9 @@ if [ -z "$password" ]; then
   password="$(openssl rand -base64 10)"
 fi
 
-export PRIVATE_KEY="$(wg genkey)"
-
 sudo mkdir /data
 sudo mkdir /data/wg-access-server
 cd /data/wg-access-server
-
-if grep -q "^docker:" /etc/group; then
-    echo "The 'docker' group exists."
-else
-    echo "The 'docker' group does not exist."
-    # You can add code here to create the group or perform other actions.
-fi
-
 
 if ! getent group docker > /dev/null; then
     sudo groupadd docker
@@ -44,8 +34,8 @@ sudo systemctl enable containerd.service
 sudo wget https://raw.githubusercontent.com/Pqko0/wg-vpn/main/dk -O docker-compose.yml
 
 sudo sed -i "s/WG_ACCESS_USERNAME_HERE/$name/g" docker-compose.yml
-sudo sed -i "s/WG_ACCESS_PASSWORD_HERE/$password/g" docker-compose.yml
-sudo sed -i "s/WG_ACCESS_KEY_HERE/$PRIVATE_KEY/g" docker-compose.yml
+sudo sed -i "s#WG_ACCESS_PASSWORD_HERE#$password#g" docker-compose.yml
+sudo sed -i "s#WG_ACCESS_KEY_HERE#$(wg genkey)#g" docker-compose.yml
 
 docker-compose up -d
 
